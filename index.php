@@ -30,11 +30,12 @@
 <p id="loading" class="">Loading...</p>
 
 <script>
+	
 	var reqListener = function(){
 		//alert(onReq.responseText);
 		result = onReq.responseText;
-		console.log(onReq.responseText);
-		
+		console.log("AJAX Status: "+ onReq.status);
+		console.log("AJAX StatusText: "+ onReq.statusText);
 		/*The response stored in result is plit using
 		 *delimeter ',' and the numbes are populated in the input boxes
 		 */
@@ -44,8 +45,16 @@
 		loading();
 	}
 	
+	var reqError = function(){
+		loading();
+		alert("Sorry, But something went wrong");
+		console.log("AJAX Status: "+ onReq.status);
+		console.log("AJAX StatusText: "+ onReq.statusText);
+	}
+		
 	var onReq = new XMLHttpRequest();
 	onReq.onload = reqListener;
+	onReq.onerror = reqError;
 	/*
 	 *Always remember, sending data to the server
 	 *using ajax is done preferable through post
@@ -56,12 +65,12 @@
 	 */
 	
 	var companyChanged = function(company){
-		loading();
 		document.forms.sample.ass1.value=""
 		document.forms.sample.ass2.value=""
 		
 		if(company != "init")
 		{
+			loading();
 			onReq.open("POST", "get_data.php", true);
 			onReq.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	
@@ -76,6 +85,7 @@
 		var anim_elem = document.getElementById('loading');
 		anim_elem.className = anim_elem.className == ""? "activate" : "";
 	}
+	
 </script>
 
 <style>
