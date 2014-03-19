@@ -9,7 +9,6 @@
 			]
 			
 ?>
-
 <form name="sample">
 		<select name="company">
 			<?php foreach ($test as $company)
@@ -25,6 +24,7 @@
 		<input name="ass2" value="" >
 		
 </form>
+
 <script>
 	
 	var reqListener = function(){
