@@ -5,15 +5,17 @@
 			'Acer',
 			'HP',
 			'Fujitsu',
-			'Apple'
-			]
+			'Apple'];
 			
+	$user_id = "56ed8Ui";
 ?>
 <form name="sample">
-		<select name="company">
-			<?php foreach ($test as $company)
+		Select a company from below<br/>
+		<select name="company" onchange="companyChanged(this.value)">
+			<option value="init">&lt; select a value from below &gt;</option>
+			<?php foreach ($test as $company_name)
 			{ ?>
-			<option value=<?php echo "'$company'"?> ><?php echo "'$company'"?></option>
+			<option value=<?php echo "'$company_name'"?> ><?php echo "'$company_name'"?></option>
 			<?php }?>
 		</select>
 		<br/>
@@ -25,14 +27,38 @@
 		
 </form>
 
+
 <script>
 	var reqListener = function(){
+		//alert(onReq.responseText);
+		result = onReq.responseText;
+		console.log(onReq.responseText);
 		
 	}
 	
 	var onReq = new XMLHttpRequest();
 	onReq.onload = reqListener;
-	onReq.open("get", "/get_data.php", true);
-	onReq.send();
+	/*
+	 *Always remember, sending data to the server
+	 *using ajax is done preferable through post
+	 *otherwise the .send() will not yeild. 
+	 *For get, pass data through the url itself
+	 *with the help of '&'
+	 */
+	onReq.open("POST", "get_data.php", true);
+	onReq.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	
+	var companyChanged = function(company){
+		document.forms.sample.ass1.value=""
+		document.forms.sample.ass2.value=""
+		
+		if(company != "init")
+		{
+			var user_id = <?php echo "'$user_id'"?>;
+			alert(company);
+			onReq.send("id="+user_id+"&company="+company);
+		}
+	}
+	
 	
 </script>
