@@ -26,7 +26,6 @@
 </form>
 
 <script>
-	
 	var reqListener = function(){
 		
 	}
@@ -35,4 +34,5 @@
 	onReq.onload = reqListener;
 	onReq.open("get", "/get_data.php", true);
 	onReq.send();
+	
 </script>
