@@ -1,4 +1,5 @@
 <?php
+
 	echo '<h1>To demo simple Ajax with php </h1>';
 	$test = ['Dell',
 			'Acer',
@@ -6,6 +7,7 @@
 			'Fujitsu',
 			'Apple'
 			]
+			
 ?>
 
 <form name="sample">
