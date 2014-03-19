@@ -27,6 +27,7 @@
 		
 </form>
 
+<p id="loading">Loading...</p>
 
 <script>
 	var reqListener = function(){
@@ -44,6 +45,7 @@
 	 *otherwise the .send() will not yeild. 
 	 *For get, pass data through the url itself
 	 *with the help of '&'
+	 *Refer: http://www.w3schools.com/ajax/ajax_xmlhttprequest_send.asp
 	 */
 	onReq.open("POST", "get_data.php", true);
 	onReq.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -60,5 +62,7 @@
 		}
 	}
 	
-	
+	var loading = function(){
+		
+	}
 </script>
