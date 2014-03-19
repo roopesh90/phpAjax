@@ -35,6 +35,12 @@
 		result = onReq.responseText;
 		console.log(onReq.responseText);
 		
+		/*The response stored in result is plit using
+		 *delimeter ',' and the numbes are populated in the input boxes
+		 */
+		document.forms.sample.ass1.value=result.split(',')[0]
+		document.forms.sample.ass2.value=result.split(',')[1]
+		
 		loading();
 	}
 	
